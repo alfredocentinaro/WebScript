@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="it">
+	<head>
+    		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap CSS -->
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/script.js"></script>
+
+   		<title>OS Scheduler</title>
+ 	</head>
+<body>
+<h1>Simulatore Schedulatori</h1>
+<h3>Un semplice simulatore che, con dei diagrammi di Gantt, simula e grafica il comportamento degli schedulatori FCFS, SJF con e senza prelazione e RR</h3>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+	<h3>Dati processi</h3>
+	<form id="insertform" class="form-horizontal" >
+	<div class="form-group">
+		<label for="processname" class="control-label col-sm-2">Nome Processo:</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="processname" name="processname" placeholder="es. P1" required>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="burst" class="control-label col-sm-2">Burst (ms):</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="burst" name="burst" step=1 min=0>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="arrivaltime" class="control-label col-sm-2">Tempo di arrivo (ms):</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="arrivaltime" name="arrivaltime" strep=1 min=0>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="timeslice" class="control-label col-sm-2">Quanto di tempo (ms) <i>solo per RR</i>:</label>
+		<div class="col-sm-5">
+			<input type="number" class="form-control" id="timeslice" name="timeslice" strep=1 min=0>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="processcolor" class="control-label col-sm-2">Colore:</label>
+		<div class="col-sm-5">
+			<input type="color" class="form-control" id="processcolor" name="processcolor" strep=1 min=0>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-10">
+	<input type="button" id="add" value="Aggiungi" class="btn btn-primary">
+	<input type="button" id="calc" value="Calcola" class="btn btn-primary">
+	</div>
+	</div>
+
+	</form>
+        </div>
+        <div class="col-lg-4">
+            <h3>Lista processi</h3>
+		<ol id="list"></ol>
+        </div>
+    </div>
+</div>
+
+<canvas id="canvas" width="500">Il tuo browser non supporta Canvas per disegnare le griglie</canvas>
+<script src="js/grid.js"></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+</script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-6902501903220745"
+     data-ad-slot="8898905452"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>
