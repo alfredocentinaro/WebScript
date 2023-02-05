@@ -1,0 +1,172 @@
+<script>
+
+if(self != self.parent)
+{
+    self.parent.location=self.location;
+};
+
+function ww( mm )
+{
+    self.status=mm;
+    return true;
+} ;
+
+function w0( mm )
+{
+    self.status="";
+    return true;
+} ;
+
+
+var v_esa="";
+var v_oct="";
+var v_dec=0;
+var v_bin="";
+var ii=0;
+var rr=0;
+var tt=0;
+var hd=new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F");
+
+function updall(qq)
+{
+v_esa="";
+for(tt=qq;tt>0;tt=tt){rr=Math.floor(tt/16);ii=tt-16*rr;v_esa=hd[ii]+""+v_esa;tt=rr;};
+v_dec=qq;
+
+v_oct="";
+
+for(tt=qq;tt>0;tt=tt){rr=Math.floor(tt/8);ii=tt-8*rr;v_oct=ii+""+v_oct;tt=rr;};v_bin="";
+for(tt=qq;tt>0;tt=tt){rr=Math.floor(tt/2);ii=tt-2*rr;v_bin=ii+""+v_bin;tt=rr;};document.the.esa.value=v_esa;
+document.the.dec.value=v_dec;document.the.oct.value=v_oct;document.the.bin.value=v_bin;};
+
+function dec2dec(dd)
+{
+    v_dec=document.the.dec.value;
+    updall(v_dec);
+};
+
+function dec2esa(dd)
+{
+    v_esa=document.the.esa.value;
+    v_esa=v_esa.toUpperCase();
+    v_dec=0;
+    for(tt=0;tt<v_esa.length;tt++)
+    {
+        rr=v_esa.charAt(tt);
+
+
+        if (isNaN(rr))
+        {
+            if (rr=="F")
+            {
+                ii=15;
+            }
+
+            if (rr=="E")
+            {
+                ii=14;
+            }
+
+            if (rr=="D")
+            {
+                ii=13;
+            }
+
+            if (rr=="C")
+            {
+                ii=12;
+            }
+
+            if (rr=="B")
+            {
+                ii=11;
+            }
+
+            if (rr=="A")
+            {
+                ii=10;
+            }
+        }
+        else
+        {
+            ii=Math.floor(rr);
+        }
+
+        v_dec=16*v_dec+ii;
+    };
+    updall(v_dec);
+};
+
+function dec2oct(dd)
+{
+    v_oct=document.the.oct.value;
+    v_dec=0;
+    for(tt=0;tt<v_oct.length;tt++)
+    {
+        rr=v_oct.charAt(tt);
+        ii=Math.floor(rr);
+        v_dec=8*v_dec+ii;
+    };
+    updall(v_dec);};
+
+function dec2bin(dd)
+{
+    v_bin=document.the.bin.value;
+    v_dec=0;
+    for(tt=0;tt<v_bin.length;tt++)
+    {
+        rr=v_bin.charAt(tt);
+        ii=Math.floor(rr);
+        v_dec=2*v_dec+ii;
+    };
+    updall(v_dec);};
+</script>
+
+<style type="text/css">
+.style1 {font-size: x-large;}
+.style2 {background-color: #FFFFFF;}
+.style3 {color: #000000; background-color: #FFFFFF;}
+</style>
+
+
+<center><font size="2" face="Arial" color="#883300">
+
+<form method="POST" action="#" name="the" onsubmit="return false;">
+<div align="center">
+<table width="600" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td align="center">
+<table style="border-collapse: collapse" id="table1" width="100%" cellpadding="5" bordercolor="#111111" border="0">
+<tbody><tr>
+<td width="50%" align="right"><font size="2" face="Arial">
+Valore <b><font color="#008000">ESADECIMALE</font></b>: <small>
+(cifre comprese tra 0 e F)</small></font></td>
+<td width="50%"><font size="2" face="Arial" color="#880000">
+<input type="text" name="esa" value="0" onchange="dec2esa(0); return true;" size="36"></font></td>
+</tr>
+<tr>
+<td width="50%" align="right"><font size="2" face="Arial">
+Valore <b><font color="#800080">DECIMALE</font></b>: <small>(cifre
+comprese tra 0 e 9)</small></font></td>
+<td width="50%"><font size="2" face="Arial" color="#880000">
+<input type="text" name="dec" value="0" onchange="dec2dec(0); return true;" size="36"></font></td>
+</tr>
+<tr>
+<td width="50%" align="right"><font size="2" face="Arial">
+Valore <b><font color="#0000FF">OTTALE</font></b>: <small>(cifre
+comprese tra 0 e 7)</small></font></td>
+<td width="50%"><font size="2" face="Arial" color="#880000">
+<input type="text" name="oct" value="0" onchange="dec2oct(0); return true;" size="36"></font></td>
+</tr>
+<tr>
+<td width="50%" align="right"><font size="2" face="Arial">
+Valore <b><font color="#FF0000">BINARIO</font></b>: <small>(usa solo
+0 ed 1)</small></font></td>
+<td width="50%"><font size="2" face="Arial" color="#880000">
+<input type="text" name="bin" value="0" onchange="dec2bin(0); return true;" size="36"></font></td>
+</tr>
+</tbody></table>
+<font size="2" face="Arial" color="#880000">
+<input type="submit" value="Converti" onclick="return false;"></font><font size="2" face="Arial">
+</font></td></tr></tbody></table></div>
+</form>
+</font>
+</center>
