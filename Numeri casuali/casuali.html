@@ -2,57 +2,60 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<script>
-function calcola()
-{
-	var _from = parseInt(document.getElementById("fromId").value);
-	var _to   = parseInt(document.getElementById("toId").value);
 
-        var _exclude = document.getElementById("excludeId").value;
-	var exVector = _exclude.split(",");
-
-	if (exVector && exVector.length)
-	{
-		while (true)
-		{
-			var _random = Math.floor(Math.random() * (_to - _from + 1)) + _from;
-			if (exVector.includes(String(_random)) == false)
-			{
-				break;
-			}
-		}
-	}
-	else
-		var _random = Math.floor(Math.random() * (_to - _from + 1)) + _from;
-
-        document.getElementById("result").innerHTML = _from + " e " + _to + ": " +_random;
-	document.getElementById("result").style.color ="red";
-	document.getElementById("result").style.fontWeight ="bold";
-}
-</script>
-
-
-</head>
-
-<body>
 <form name="random">
-<fieldset>
-<legend>Numeri casuali</legend>
+    <fieldset>
+    <legend>Numeri casuali</legend>
+    
+    <label for="fromName">Da:</label>
+    <input type="number" id="fromId" name="fromName" step="1" min="0"><br><br>
+    <label for="toName">A:&nbsp;&nbsp;</label>
+    <input type="number" id="toId" name="toName" step="1"><br><br><br>
+    
+    <label for="excludeName">Escludi questi numeri: (separa con "," )</label><br>
+    <input type="text" id="excludeId" name="excludeName" size="50"><br><br>
+    
+    <input type="button" value="Calcola" id="calcola">&nbsp;
+    <input type="reset" value="Cancella">
+    </fieldset>
+    </form>
+    <br><br>
+    Valore tra <span id="result"></span>
 
-<label for="fromName">Da:</label>
-<input type="number" id="fromId" name="fromName" step=1 min=0><br><br>
-<label for="toName">A:&nbsp;&nbsp;</label>
-<input type="number" id="toId" name="toName" step=1 ><br><br><br>
+    <script>
+        let objBtnCalcola = document.querySelector("#calcola");
+        objBtnCalcola.addEventListener("click", calcola);
+        function calcola()
+        {
+            let _from = parseInt(document.getElementById("fromId").value);
+            let _to = parseInt(document.getElementById("toId").value);
+        
+            let _exclude = document.getElementById("excludeId").value;
+            let exVector = _exclude.split(",");
+        
+            if (exVector && exVector.length)
+            {
+                while (true)
+                {
+                    var _random = Math.floor(Math.random() * (_to - _from + 1)) + _from;
+                    if (exVector.includes(String(_random)) == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                console.log("test");
+                var _random = Math.floor(Math.random() * (_to - _from + 1)) + _from;
+            }
 
-<label for="excludeName">Escludi questi numeri: (separa con "," )</label><br>
-<input type="text" id="excludeId" name="excludeName" size="50"><br><br>
-
-<input type="button" value="Calcola" onclick="calcola()">&nbsp;
-<input type="reset"  value="Cancella">
-</fieldset>
-</form>
-<br><br>
-Valore tra <span id="result"></span>
+            let objResult = document.getElementById("result");
+            objResult.innerHTML = _from + " e " + _to + ": " +_random;
+            objResult.style.color ="red";
+            objResult.style.fontWeight ="bold";    
+        }
+        </script>
 <br><br>
 <div style="text-align: center">
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
